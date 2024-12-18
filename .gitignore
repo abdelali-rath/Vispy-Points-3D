@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Pytest
+.pytest_cache/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# MacOS
+.DS_Store
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Ignore IDE settings
+.idea/
+*.iml
+*.sublime-workspace
