@@ -1,0 +1,47 @@
+import numpy as np
+from vispy import app, scene
+from vispy.app import Timer
+
+canvas = scene.SceneCanvas(keys="interactive", show=True)
+view = canvas.central_widget.add_view()
+
+view.camera = scene.TurntableCamera()        #PanZoomCamera(aspect=1)
+
+#Data
+n_points = 10000
+x = np.random.normal(0, 1.0, size=n_points)
+y = np.random.normal(0, 1.0, size=n_points)
+z = np.random.normal(0, 1.0, size=n_points)
+
+def diffuse(x, y, z):
+    n_points = x.shape
+    x += np.random.normal(0, 0.1, size=n_points)
+    y += np.random.normal(0, 0.1, size=n_points)
+    z += np.random.normal(0, 0.1, size=n_points)
+
+    return x, y, z
+
+
+
+scatter = scene.visuals.Markers()
+#Einzeichnen der Punkte
+scatter.set_data(np.array([x, y, z]).T)
+view.add(scatter)
+
+def update(event):
+    global x, y, z
+    x, y, z = diffuse(x, y, z)
+    scatter.set_data(np.array([x, y, z]).T)
+
+timer = Timer(interval=0.05, connect=update, start=True)
+
+app.run()
+
+
+
+
+
+
+
+
+
